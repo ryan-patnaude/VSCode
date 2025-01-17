@@ -10,14 +10,14 @@ from cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER
 fid = "/Users/rpatnaude/Documents/MATLAB/Data/CAESAR/C130_data/RF01.20240228.113900_183644.PNI.nc"
 
 # Import with xarray
-# ds = xr.open_dataset(fid,engine="netcdf4")
-# lat = np.array(ds.GGLAT)
-# lon = np.array(ds.GGLON)
+ds = xr.open_dataset(fid,engine="netcdf4")
+lat = np.array(ds.GGLAT)
+lon = np.array(ds.GGLON)
 
 # import with netCDF4
-nc_fid = Dataset(fid, 'r') 
-lat = nc_fid.variables['GGLAT'][:]  # extract/copy the data
-lon = nc_fid.variables['GGLON'][:]
+# nc_fid = Dataset(fid, 'r') 
+# lat = nc_fid.variables['GGLAT'][:]  # extract/copy the data
+# lon = nc_fid.variables['GGLON'][:]
 
 #Find median and std for o3 and ps
 

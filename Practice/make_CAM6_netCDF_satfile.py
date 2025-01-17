@@ -56,47 +56,12 @@ for file in files:
         print(f"Error processing file {file}: {e}")
         continue
 
-# # Loop over the files to extract data
-# for file in files:
-#     file_path = os.path.join(input_dir, file)
-    
-#     # Read data from the file
-#     with h5py.File(file_path, 'r') as f:
-#         time = np.array(f['Time'])
-#         lat = np.array(f['GGLAT'])
-#         lon = np.array(f['GGLON'])
-        
-#         # Append data to the lists
-#         TIME.append(time)
-#         LAT.append(lat)
-#         LON.append(lon)
-        
-#         # Read flight date attribute and format it
-#         # print(f)
-#         try:
-#             flight_date = f.attrs['FlightDate'].decode('utf-8')  # Decode if stored as bytes
-#             fd = flight_date.split('/')
-#             flt_date = int(fd[2] + fd[0] + fd[1])
-#         except (KeyError, ValueError, AttributeError) as e:
-#             print(f"Error processing flight date in file {file}: {e}")
-#             continue
-
-
-#         # flight_date = f.attrs['FlightDate']
-#         # print(flight_date)
-#         fd = flight_date.split('/')
-#         flt_date = int(fd[2] + fd[0] + fd[1])  # Combine day/month/year to YYYYMMDD format
-        
-#         # Create a date array
-#         date = np.full(time.shape, flt_date)
-#         DATE.append(date)
-
 # # Concatenate lists into single arrays
 TIME = np.concatenate(TIME)
 DATE = np.concatenate(DATE)
 LAT = np.concatenate(LAT)
 LON = np.concatenate(LON)
-print(TIME)
+
 # Adjust TIME and DATE to handle cases greater than 86400 (i.e., after midnight)
 for i in range(len(TIME)):
     if TIME[i] > 86400:
